@@ -20,3 +20,53 @@ body
     left: 0;
     outline: none;
 }
+
+.container{
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction:column;
+    place-content: top;
+}
+.content{
+    display: flex;
+    flex-direction:row;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 3rem;
+    width: 50vw;
+    line-height: 97%;
+    text-align: center;
+}
+
+.head{
+    /* border: 2px solid white; */
+    display: flex;
+    flex-direction: row;
+    height: 5rem;
+    margin-top: 1rem;
+}
+
+.game-container{
+    display: grid;
+    grid-template-columns: repeat(20, auto);
+    gap: 5px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.card{
+    /* background: linear-gradient(331deg, rgba(2,0,36,1) 9%, rgba(9,9,121,1) 46%, rgba(0,212,255,1) 96%); */
+    background: #7878e3;
+    height: 120px;
+    width: 70px;
+    margin: 5px;
+    color: white;
+}
