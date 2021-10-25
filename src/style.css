@@ -69,4 +69,28 @@ h1 {
     width: 70px;
     margin: 5px;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.card-face {
+    /* position: absolute; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
+    /* height: 100%; */
+    overflow: hidden;
+    transition: transform 500ms ease-in-out;
+    backface-visibility: hidden;
+  }
+
+  .card-back {
+    background-color: black;
+    border-color: #FF6D00;
+    transform: rotateY(0);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+  }
