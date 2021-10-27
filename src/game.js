@@ -4,9 +4,24 @@ class MixOrMatch {
       this.totalTime = totalTime;
       this.cardToCheck = null;
       this.matchedCards = [];
+      this.timeRemaining = totalTime;
+      this.timer = document.getElementById('time-remaining')
+      this.ticker = document.getElementById('card-clicks');  
   }
   startGame() {
-    this.shuffleCards(this.cardsArray);
+    this.totalClicks = 0;
+    this.timeRemaining = this.totalTime;
+    this.cardToCheck = null;
+    this.matchedCards = [];
+    this.busy = true;
+    setTimeout(() => {
+        this.shuffleCards(this.cardsArray);
+        this.countdown = this.startCountdown();
+        this.busy = false;
+    }, 500)
+    this.hideCards();
+    this.timer.innerText = this.timeRemaining;
+    this.ticker.innerText = this.totalClicks;    
   }
 
   shuffleCards(cardsArray) { // Fisher-Yates Shuffle Algorithm.
@@ -20,7 +35,8 @@ class MixOrMatch {
   flipCard(card) {
     if(this.canFlipCard(card)) {
       card.classList.add('click');
-
+      this.totalClicks++;
+      this.ticker.innerText = this.totalClicks;
         if(this.cardToCheck) {
             this.checkForCardMatch(card);
         } else {
@@ -55,6 +71,25 @@ class MixOrMatch {
 
   canFlipCard(card) {
     return !this.matchedCards.includes(card) && card !== this.cardToCheck;
+  }
+
+  hideCards() {
+    this.cardsArray.forEach(card => {
+        card.classList.remove('matched');
+        card.classList.remove('click');
+    });
+  
+  }
+  startCountdown() {
+    return setInterval(() => {
+        this.timeRemaining--;
+        this.timer.innerText = this.timeRemaining;
+        if(this.timeRemaining === 0)
+            this.gameOver();
+    }, 1000);
+  }
+  gameOver() {
+    clearInterval(this.countdown);
   }
 }
 
