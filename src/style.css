@@ -4,12 +4,18 @@
     padding: 0;
 }
 
+@font-face {
+    font-family: "Electroharmonix";
+    src: url("electroharmonix.ttf") format("truetype");
+}
+
 html,
 body
 {
     height: 100vh;
     font-family: 'Poppins';
-    color: pink;
+    color: white;
+    font-family: "Electroharmonix";
     /* background-color: teal; */
 }
 
@@ -73,6 +79,7 @@ h1 {
     justify-content: center;
     align-items: center;
     opacity: 0.8;
+    font-family: "Midorima";
 }
 
 .card-face {
@@ -92,13 +99,13 @@ h1 {
   }
 
   .matched{
-    color: pink;
-    background: blue;
+    color: black;
+    background: #96d289;
   }
 
   .click{
-    background: white;
-    color: black;
+    background: #7209b7;
+    color: white;
   }
 
 .begin-overlay {
