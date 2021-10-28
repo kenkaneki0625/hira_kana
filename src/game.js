@@ -59,6 +59,8 @@ class MixOrMatch {
     card2.classList.remove('click');
     card1.classList.add('matched');
     card2.classList.add('matched');
+    if(this.matchedCards.length === this.cardsArray.length)
+            this.victory();
   }
   cardMismatch(card1, card2) {
     card1.classList.remove('click');
@@ -90,7 +92,12 @@ class MixOrMatch {
   }
   gameOver() {
     clearInterval(this.countdown);
+    document.getElementById('end-overlay').classList.add('visible');
   }
+  victory() {
+    clearInterval(this.countdown);
+    document.getElementById('victory-overlay').classList.add('visible');
+}
 }
 
 if (document.readyState == 'loading') {
@@ -100,9 +107,16 @@ if (document.readyState == 'loading') {
 }
 
 function ready() {
+  let overlays = Array.from(document.getElementsByClassName('overlay '));
   let cards = Array.from(document.getElementsByClassName('card'));
-  let game = new MixOrMatch(100, cards);
-  game.startGame();
+  let game = new MixOrMatch(200, cards);
+
+  overlays.forEach(overlay => {
+    overlay.addEventListener('click', () => {
+        overlay.classList.remove('visible');
+        game.startGame();
+    });
+  });
 
   cards.forEach(card => {
       card.addEventListener('click', () => {
