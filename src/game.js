@@ -1,3 +1,35 @@
+class AudioController {
+  constructor() {
+      this.bgMusic = new Audio('https://docs.google.com/uc?export=open&id=1zho15hWWdkZ4Wt7EjgKFE3gClX5LWhqH');
+      this.flipSound = new Audio('https://docs.google.com/uc?export=open&id=1weOTktFZj07HoEXoGmZ3P9Z-bNRzjeNj');
+      this.matchSound = new Audio('https://docs.google.com/uc?export=open&id=108koo0UoE1FKJj-FHmx6LmyBnjA0-8w8');
+      this.victorySound = new Audio('https://docs.google.com/uc?export=open&id=1iz2s9qFW1croSnxvnXIYeoxGz47m6Y6n');
+      this.gameOverSound = new Audio('https://docs.google.com/uc?export=open&id=10H0_nF6jwXMse-MNuC2clmHsIue7i8qa');
+      this.bgMusic.volume = 0.5;
+      this.bgMusic.loop = true;
+  }
+  startMusic() {
+      this.bgMusic.play();
+  }
+  stopMusic() {
+      this.bgMusic.pause();
+      this.bgMusic.currentTime = 0;
+  }
+  flip() {
+      this.flipSound.play();
+  }
+  match() {
+      this.matchSound.play();
+  }
+  victory() {
+      this.stopMusic();
+      this.victorySound.play();
+  }
+  gameOver() {
+      this.stopMusic();
+      this.gameOverSound.play();
+  }
+}
 class MixOrMatch {
   constructor(totalTime, cards) {
       this.cardsArray = cards;
@@ -6,7 +38,8 @@ class MixOrMatch {
       this.matchedCards = [];
       this.timeRemaining = totalTime;
       this.timer = document.getElementById('time-remaining')
-      this.ticker = document.getElementById('card-clicks');  
+      this.ticker = document.getElementById('card-clicks');
+      this.audioController = new AudioController();  
   }
   startGame() {
     this.totalClicks = 0;
@@ -15,6 +48,7 @@ class MixOrMatch {
     this.matchedCards = [];
     this.busy = true;
     setTimeout(() => {
+      this.audioController.startMusic();
         this.shuffleCards(this.cardsArray);
         this.countdown = this.startCountdown();
         this.busy = false;
@@ -35,6 +69,7 @@ class MixOrMatch {
   flipCard(card) {
     if(this.canFlipCard(card)) {
       card.classList.add('click');
+      this.audioController.flip();
       this.totalClicks++;
       this.ticker.innerText = this.totalClicks;
         if(this.cardToCheck) {
@@ -59,6 +94,7 @@ class MixOrMatch {
     card2.classList.remove('click');
     card1.classList.add('matched');
     card2.classList.add('matched');
+    this.audioController.match();
     if(this.matchedCards.length === this.cardsArray.length)
             this.victory();
   }
@@ -92,10 +128,12 @@ class MixOrMatch {
   }
   gameOver() {
     clearInterval(this.countdown);
+    this.audioController.gameOver();
     document.getElementById('end-overlay').classList.add('visible');
   }
   victory() {
     clearInterval(this.countdown);
+    this.audioController.victory();
     document.getElementById('victory-overlay').classList.add('visible');
 }
 }
