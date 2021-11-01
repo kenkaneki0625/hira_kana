@@ -9,6 +9,11 @@
     src: url("electroharmonix.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "Nuku";
+    src: url("nuku1.ttf") format("truetype");
+}
+
 html,
 body
 {
@@ -120,6 +125,9 @@ h1 {
     align-items: center;
     background-color: aliceblue;
     opacity: 0.7;
+    color: black;
+    font-family: Nuku;
+    font-size: 40px;
 }
 
 .begin-overlay.visible {
@@ -138,6 +146,9 @@ h1 {
     align-items: center;
     background-color: aliceblue;
     opacity: 0.7;
+    color: black;
+    font-family: Nuku;
+    font-size: 40px;
 }
 
 .end-overlay.visible {
@@ -156,6 +167,9 @@ h1 {
     align-items: center;
     background-color: aliceblue;
     opacity: 0.7;
+    color: black;
+    font-family: Nuku;
+    font-size: 40px;
 }
 
 .victory-overlay.visible {
@@ -165,6 +179,4 @@ h1 {
 .overlay-button {
     background-color: pink;
     color: black;
-    position: absolute;
-    z-index: 200;
 }
