@@ -2,6 +2,8 @@
 Hiragana and katakana are the two syllabaries in Japanese. Hiragana is used to form the grammar of the sentence and katakana is used primarily to write words that have been imported from other languages, e.g. coffee, table, and so forth. You can dispense with learning katakana for a little while, but hiragana is absolutely essential.
 This is a small game for testing your Hiragana and Katakana skills. Have fun!!!
 
+You can play this game in this link: https://kenkaneki0625.github.io/hira_kana/
+
 ![HiraganaKatakanaChart](https://user-images.githubusercontent.com/46960330/139679888-18bdf254-ed42-414a-bd76-2c5e0830abfd.png)
 
 
