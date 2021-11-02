@@ -60,9 +60,9 @@ function init() {
 
         const particles = new THREE.Points( geometry, materials[ i ] );
 
-        particles.rotation.x = Math.random() * 3;
-        particles.rotation.y = Math.random() * 3;
-        particles.rotation.z = Math.random() * 3;
+        particles.rotation.x = Math.random() * 2;
+        particles.rotation.y = Math.random() * 2;
+        particles.rotation.z = Math.random() * 2;
 
         scene.add( particles );
 
@@ -116,8 +116,8 @@ function render() {
 
     const time = Date.now() * 0.00005;
 
-    camera.position.x += ( mouseX - camera.position.x ) * 0.025;
-    camera.position.y += ( - mouseY - camera.position.y ) * 0.025;
+    camera.position.x += ( mouseX - camera.position.x ) * 0.005;
+    camera.position.y += ( - mouseY - camera.position.y ) * 0.005;
 
     camera.lookAt( scene.position );
 
